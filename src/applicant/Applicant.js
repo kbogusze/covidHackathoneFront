@@ -56,9 +56,9 @@ class Applicant extends React.Component {
                     <CurrentContent/>
                 </div>
                 <div className="steps-action">
-                    {current < steps.length - 1 && (
-                        <Button type="primary" onClick={() => this.next()}>
-                            Next
+                    {current > 0 && (
+                        <Button style={{ margin: 8 }} onClick={() => this.prev()}>
+                            Previous
                         </Button>
                     )}
                     {current === steps.length - 1 && (
@@ -66,9 +66,9 @@ class Applicant extends React.Component {
                             Done
                         </Button>
                     )}
-                    {current > 0 && (
-                        <Button style={{ margin: 8 }} onClick={() => this.prev()}>
-                            Previous
+                    {current < steps.length - 1 && (
+                        <Button type="primary" onClick={() => this.next()}>
+                            Next
                         </Button>
                     )}
                 </div>
