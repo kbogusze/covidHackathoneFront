@@ -5,10 +5,6 @@ const layout = {
     labelCol: { span: 6 },
     wrapperCol: { span: 14 },
 };
-const tailLayout = {
-    wrapperCol: { offset: 8, span: 16 },
-};
-
 const onFinish = values => {
     console.log('Success:', values);
 };
