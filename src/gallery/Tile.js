@@ -1,41 +1,43 @@
 import React from 'react';
 import {Card, Progress} from 'antd';
-
+import {Link, useRouteMatch} from 'react-router-dom';
 const { Meta } = Card;
 
-class Tile extends React.Component {
-    render() {
-        const {image, title, percent} = this.props;
+const Tile = (props) => {
+    const {deal: {image, title, percent, id}, redirect} = props;
+    const match = useRouteMatch();
 
-        return (
+    return (
+        <Link to={redirect ? `${match.url}/${id}` : 'gallery'}>
             <Card
                 hoverable
                 style={{ width: 320 }}
                 cover={<img alt="example" src={image} />}
             >
                 <Meta title={title} />
-                    <Progress percent={percent} size="small" status={this.getStatus(percent)} />
+                <Progress percent={percent} size="small" status={getStatus(percent)} />
             </Card>
-        );
+        </Link>
+    );
+}
+
+export const getStatus = (percentage) => {
+    if (percentage < 26) {
+        return 'exception';
     }
 
-    getStatus = (percentage) => {
-        if (percentage < 26) {
-            return 'exception';
-        }
+    if (percentage >= 26 && percentage < 51) {
+        return 'active';
+    }
 
-        if (percentage >= 26 && percentage < 51) {
-            return 'active';
-        }
+    if (percentage >= 51 && percentage < 75) {
+        return 'normal';
+    }
 
-        if (percentage >= 51 && percentage < 75) {
-            return 'normal';
-        }
-
-        if (percentage >= 75) {
-            return 'success';
-        }
+    if (percentage >= 75) {
+        return 'success';
     }
 }
+
 
 export default Tile;

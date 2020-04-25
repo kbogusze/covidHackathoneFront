@@ -7,26 +7,30 @@ import empik from '../assets/images/empik.jpg';
 import coffeeshop from '../assets/images/coffeeshop.jpg';
 import {Col, Row} from 'antd';
 
-const deals = [
+export const deals = [
     {
+        id: 1,
         title: 'ABC Bookstore',
         image: bookstore,
         percent: 70,
         category: 'bookstore'
     },
     {
+        id: 2,
         title: 'Empik',
         image: empik,
         percent: 25,
         category: 'bookstore'
     },
     {
+        id: 3,
         title: 'Księgarnia Litera',
         image: bookstore2,
         percent: 10,
         category: 'bookstore'
     },
     {
+        id: 4,
         title: 'Aroma cafe',
         image: coffeeshop,
         percent: 50,
@@ -42,7 +46,7 @@ class Gallery extends React.Component {
                     <Col className="gutter-row" span={6}>
                         <Tile
                             key={index}
-                            {...deal}
+                            deal={deal}
                         />
                     </Col>
                 ))}
