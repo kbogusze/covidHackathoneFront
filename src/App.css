@@ -62,3 +62,11 @@ body {
 .guarantor {
   margin-left: 50px;
 }
+
+.center {
+  margin: 0 auto;
+}
+
+.video {
+  margin-top: 30px;
+}
