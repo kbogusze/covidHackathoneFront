@@ -34,7 +34,7 @@ const deals = [
     },
 ];
 
-class Guarantor extends React.Component {
+class Gallery extends React.Component {
     render() {
         return (
             <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
@@ -51,4 +51,4 @@ class Guarantor extends React.Component {
     }
 }
 
-export default Guarantor;
+export default Gallery;

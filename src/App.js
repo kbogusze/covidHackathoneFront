@@ -9,7 +9,7 @@ import {
 import Applicant from './applicant/Applicant';
 import Guarantor from './guarantor/Guarantor';
 import Home from './home/Home';
-import Gallery from './gallery/Gallery';
+import GalleryPage from './gallery/GalleryPage';
 
 class App extends React.Component {
     render() {
@@ -26,7 +26,7 @@ class App extends React.Component {
                             <Guarantor />
                         </Route>
                         <Route path="/gallery">
-                            <Gallery />
+                            <GalleryPage />
                         </Route>
                         <Route>
                             <Home />
