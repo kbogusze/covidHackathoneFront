@@ -1,18 +1,5 @@
 import React from 'react';
-import {Checkbox, DatePicker, Form, Input, Select} from 'antd';
-
-const layout = {
-    labelCol: { span: 6 },
-    wrapperCol: { span: 14 },
-};
-
-const onFinish = values => {
-    console.log('Success:', values);
-};
-
-const onFinishFailed = errorInfo => {
-    console.log('Failed:', errorInfo);
-};
+import {Checkbox, DatePicker, Form, Input} from 'antd';
 
 const formTailLayout = {
     labelCol: { span: 4 },
@@ -23,13 +10,7 @@ class Request extends React.Component {
 
     render() {
         return (
-            <Form
-                {...layout}
-                name="basic"
-                initialValues={{ remember: true }}
-                onFinish={onFinish}
-                onFinishFailed={onFinishFailed}
-            >
+            <>
                 <Form.Item
                     label="Collateral title"
                     name="collateralTitle"
@@ -69,7 +50,7 @@ class Request extends React.Component {
                         I allow Solidarity Collateral to process my personal data for the marketing purposes
                     </Checkbox>
                 </Form.Item>
-            </Form>
+            </>
         );
     }
 }

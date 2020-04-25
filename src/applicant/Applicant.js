@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Steps, Button, message } from 'antd';
+import {Steps, Button, message, Form} from 'antd';
 import Account from './Account';
 import Company from './Company';
 import Request from './Request';
@@ -24,6 +24,19 @@ const steps = [
     },
 ];
 
+const onFinish = values => {
+    console.log('Success:', values);
+};
+
+const onFinishFailed = errorInfo => {
+    console.log('Failed:', errorInfo);
+};
+
+const layout = {
+    labelCol: { span: 6 },
+    wrapperCol: { span: 14 },
+};
+
 class Applicant extends React.Component {
     constructor(props) {
         super(props);
@@ -45,8 +58,15 @@ class Applicant extends React.Component {
     render() {
         const { current } = this.state;
         const CurrentContent = steps[current].content;
+
         return (
-            <div>
+            <Form
+                {...layout}
+                name="applicantForm"
+                initialValues={{ remember: true }}
+                onFinish={onFinish}
+                onFinishFailed={onFinishFailed}
+            >
                 <Steps current={current}>
                     {steps.map(item => (
                         <Step key={item.title} title={item.title} />
@@ -72,7 +92,7 @@ class Applicant extends React.Component {
                         </Button>
                     )}
                 </div>
-            </div>
+            </Form>
         );
     }
 }

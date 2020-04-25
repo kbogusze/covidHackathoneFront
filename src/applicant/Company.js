@@ -1,29 +1,11 @@
 import React from 'react';
 import {Form, Input, Select} from 'antd';
 
-const layout = {
-    labelCol: { span: 6 },
-    wrapperCol: { span: 14 },
-};
-const onFinish = values => {
-    console.log('Success:', values);
-};
-
-const onFinishFailed = errorInfo => {
-    console.log('Failed:', errorInfo);
-};
-
 class Company extends React.Component {
 
     render() {
         return (
-            <Form
-                {...layout}
-                name="basic"
-                initialValues={{ remember: true }}
-                onFinish={onFinish}
-                onFinishFailed={onFinishFailed}
-            >
+            <>
                 <Form.Item
                     label="Company name"
                     name="companyName"
@@ -84,7 +66,7 @@ class Company extends React.Component {
                 >
                     <Input />
                 </Form.Item>
-            </Form>
+            </>
         );
     }
 }

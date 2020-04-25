@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Steps, Button, message } from 'antd';
+import {Steps, Button, message, Form} from 'antd';
 import Account from '../applicant/Account';
 
 const { Step } = Steps;
@@ -11,6 +11,20 @@ const steps = [
         content: Account,
     },
 ];
+
+const onFinish = values => {
+    console.log('Success:', values);
+};
+
+const onFinishFailed = errorInfo => {
+    console.log('Failed:', errorInfo);
+};
+
+const layout = {
+    labelCol: { span: 6 },
+    wrapperCol: { span: 14 },
+};
+
 
 class Guarantor extends React.Component {
     constructor(props) {
@@ -33,8 +47,15 @@ class Guarantor extends React.Component {
     render() {
         const { current } = this.state;
         const CurrentContent = steps[current].content;
+
         return (
-            <div>
+            <Form
+                {...layout}
+                name="guarantorForm"
+                initialValues={{ remember: true }}
+                onFinish={onFinish}
+                onFinishFailed={onFinishFailed}
+            >
                 <Steps current={current}>
                     {steps.map(item => (
                         <Step key={item.title} title={item.title} />
@@ -60,7 +81,7 @@ class Guarantor extends React.Component {
                         </Button>
                     )}
                 </div>
-            </div>
+            </Form>
         );
     }
 }
