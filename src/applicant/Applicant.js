@@ -5,7 +5,7 @@ import Account from './Account';
 import Company from './Company';
 import Request from './Request';
 import BackendConfiguration from "../BackendConfiguration";
-
+import { useHistory } from 'react-router-dom';
 
 import './applicant.css';
 
@@ -45,6 +45,8 @@ class Applicant extends React.Component {
         this.state = {
             current: 0,
 
+            mainComponentState : "ACCOUNT", // There are statesACCOUNT COMPANY DEAL
+
             // We will post this data to Person and Deal entities
             login: undefined,
             password: undefined,
@@ -68,7 +70,7 @@ class Applicant extends React.Component {
             collateralTitle: undefined,
             dueDate: undefined,
             selectDate: undefined,
-            reqeustedCollateralAmount: undefined,
+            requestedCollateralAmount: undefined,
             requestDescription: undefined
         };
 
@@ -83,32 +85,134 @@ class Applicant extends React.Component {
         this.updateCompanyName = this.updateCompanyName.bind(this);
         this.updateActivityCategory = this.updateActivityCategory.bind(this);
 
+        this.updateCompanyName = this.updateCompanyName.bind(this);
+        this.updateActivityCategory = this.updateActivityCategory.bind(this);
+        this.updateNip = this.updateNip.bind(this);
+        this.updateRegon = this.updateRegon.bind(this);
+        this.updatePesel = this.updatePesel.bind(this);
+        this.updateCompanyAddress = this.updateCompanyAddress.bind(this);
+        this.updateCompanyPhone = this.updateCompanyPhone.bind(this);
+        this.updateCompanyAddress = this.updateCompanyAddress.bind(this);
+
+        this.updateCollateralTitle = this.updateCollateralTitle.bind(this);
+        this.updateDueDate = this.updateDueDate.bind(this);
+        this.updateSelectDate = this.updateSelectDate.bind(this);
+        this.updateRequestedCollateralAmount = this.updateRequestedCollateralAmount.bind(this);
+        this.updateRequestDescription = this.updateRequestDescription.bind(this);
+
         this.postAccountData = this.postAccountData.bind(this);
+        this.postCompanyData = this.postCompanyData.bind(this);
+        this.postDealData = this.postDealData.bind(this);
+
+        this.redirectToGallery = this.redirectToGallery.bind(this);
+        this.encodeUserCrendentialsInBase64 = this.encodeUserCrendentialsInBase64.bind(this);
     }
+
+
 
     postAccountData() {
       console.log("Posting Person data to server!!!");
-      var url = BackendConfiguration.serverAddress + "/persons";
+      var url = BackendConfiguration.serverAddress + "/users";
       var method = "POST";
       var object = {
+        address: this.state.address,
+        cardIdNumber: "",
+        email: this.state.email,
         firstName: this.state.name,
         lastName: this.state.surname,
+        password: this.state.password,
         phoneNumber: this.state.phone,
-        email: this.state.email,
-        cardIdNumber: null,
-        termConsent: null,
-        contactConsent: null
-        };
+        userType: "",
+        username: this.state.login
+      };
       var objectJSON = JSON.stringify(object);
       console.log(objectJSON);
       const Http = new XMLHttpRequest();
       Http.onload = function () {
-      var status = Http.status;
-      var data = Http.responseText;
+        var status = Http.status;
+        var data = Http.responseText;
+        console.log("Status: " + status);
+        console.log("Data: " + data);
       }
       Http.open("POST", url, true);
+      //Http.setRequestHeader("Authorization", "Basic T1JGSTpPUkZJ");
       Http.setRequestHeader("Content-Type", "application/json");
       Http.send(objectJSON);
+    }
+
+    postCompanyData() {
+      console.log("Posting Company data to server!!!");
+
+      console.log("Has DOM fileInput element? : " + document.getElementById('fileInput'));
+
+      var url = BackendConfiguration.serverAddress + "/company";
+      var method = "POST";
+      var object = {
+        activityCategory: this.state.activityCategory,
+        companyAddress: this.state.companyAddress,
+        companyName: this.state.companyName,
+        companyPhone: this.state.companyPhone,
+        companyWebsite: this.state.companyWebsite,
+        nipNumber: this.state.nip,
+        peselNumber: this.state.pesel,
+        regonNumber: this.state.regon
+      };
+      var objectJSON = JSON.stringify(object);
+      console.log(objectJSON);
+      const Http = new XMLHttpRequest();
+      Http.onload = function () {
+        var status = Http.status;
+        var data = Http.responseText;
+        console.log("Status: " + status);
+        console.log("Data: " + data);
+      }
+      Http.open("POST", url, true);
+      //Http.setRequestHeader("Authorization", "Basic T1JGSTpPUkZJ");
+      //Http.setRequestHeader("Authorization", "Basic S3J6eXN6dG9mMTpwYXNzd29yZA==");
+      Http.setRequestHeader("Authorization", this.encodeUserCrendentialsInBase64(this.state.login, this.state.password));
+      Http.setRequestHeader("Content-Type", "application/json");
+      Http.send(objectJSON);
+    }
+
+    postDealData() {
+      console.log("Posting Deal data to server!!!");
+      var url = BackendConfiguration.serverAddress + "/deals";
+      var method = "POST";
+      var object = {
+       collateralTitle : this.state.collateralTitle,
+       dueDate : this.state.dueDate,
+       marketingPurposes : true,
+       personalDataAcceptance : true,
+       requestDescription : this.state.requestDescription,
+       requestedCollateralAmount : this.state.requestedCollateralAmount
+      };
+      var objectJSON = JSON.stringify(object);
+      console.log(objectJSON);
+      const Http = new XMLHttpRequest();
+      Http.onload = function () {
+        var status = Http.status;
+        var data = Http.responseText;
+        console.log("Status: " + status);
+        console.log("Data: " + data);
+      }
+      Http.open("POST", url, true);
+      Http.setRequestHeader("Authorization", this.encodeUserCrendentialsInBase64(this.state.login, this.state.password));
+      Http.setRequestHeader("Content-Type", "application/json");
+      Http.send(objectJSON);
+    }
+
+    redirectToGallery() {
+      console.log("Redirecting to gallery!");
+      const history = useHistory();
+      history.push("/gallery");
+    }
+
+    encodeUserCrendentialsInBase64(user, password) {
+        var token = user + ":" + password;
+        // Should i be encoding this value????? does it matter???
+        // Base64 Encoding -> btoa
+        var hash = btoa(token);
+        return "Basic " + hash;
     }
 
     updateLogin(newState) {
@@ -139,47 +243,48 @@ class Applicant extends React.Component {
       this.setState({phone:newState});
     }
     updateCompanyName(newState) {
+      console.log("Updating company name with newState : " + newState);
       this.setState({companyName:newState});
     }
     updateActivityCategory(newState) {
       this.setState({activityCategory:newState});
     }
-    nip(newState) {
-      this.setState({login:newState});
+    updateNip(newState) {
+      this.setState({nip:newState});
     }
-    regon(newState) {
-      this.setState({login:newState});
+    updateRegon(newState) {
+      this.setState({regon:newState});
     }
-    pesel(newState) {
-      this.setState({login:newState});
+    updatePesel(newState) {
+      this.setState({pesel:newState});
     }
-    companyAddress(newState) {
-      this.setState({login:newState});
+    updateCompanyAddress(newState) {
+      this.setState({companyAddress:newState});
     }
-    companyPhone(newState) {
-      this.setState({login:newState});
+    updateCompanyPhone(newState) {
+      this.setState({companyPhone:newState});
     }
-    companyWebsite(newState) {
-      this.setState({login:newState});
+    updateCompanyWebsite(newState) {
+      this.setState({companyWebsite:newState});
     }
-    uploadAttachments(newState) {
-      this.setState({login:newState});
+    updateUploadAttachments(newState) {
+      this.setState({uploadAttachments:newState});
     }
     //---
-    collateralTitle(newState) {
-      this.setState({login:newState});
+    updateCollateralTitle(newState) {
+      this.setState({collateralTitle:newState});
     }
-    dueDate(newState) {
-      this.setState({login:newState});
+    updateDueDate(newState) {
+      this.setState({dueDate:newState});
     }
-    selectDate(newState) {
-      this.setState({login:newState});
+    updateSelectDate(newState) {
+      this.setState({selectDate:newState});
     }
-    reqeustedCollateralAmount(newState) {
-      this.setState({login:newState});
+    updateRequestedCollateralAmount(newState) {
+      this.setState({requestedCollateralAmount:newState});
     }
-    requestDescription(newState) {
-      this.setState({login:newState});
+    updateRequestDescription(newState) {
+      this.setState({requestDescription:newState});
     }
 
     next() {
@@ -220,6 +325,21 @@ class Applicant extends React.Component {
                     updateSurname = {this.updateSurname}
                     updateAddress = {this.updateAddress}
                     updatePhone = {this.updatePhone}
+
+                    updateCompanyName = {this.updateCompanyName}
+                    updateActivityCategory = {this.updateActivityCategory}
+                    updateNip = {this.updateNip}
+                    updateRegon = {this.updateRegon}
+                    updatePesel = {this.updatePesel}
+                    updateCompanyAddress = {this.updateCompanyAddress}
+                    updateCompanyPhone = {this.updateCompanyPhone}
+                    updateCompanyAddress = {this.updateCompanyAddress}
+
+                    updateCollateralTitle = {this.updateCollateralTitle}
+                    updateDueDate = {this.updateDueDate}
+                    updateSelectDate = {this.updateSelectDate}
+                    updateRequestedCollateralAmount = {this.updateRequestedCollateralAmount}
+                    updateRequestDescription = {this.updateRequestDescription}
                     />
                 </div>
                 <div className="steps-action">
@@ -229,12 +349,30 @@ class Applicant extends React.Component {
                         </Button>
                     )}
                     {current === steps.length - 1 && (
-                        <Button type="primary" onClick={() => {message.success('Processing complete!'); this.postAccountData();}}>
+                        <Button type="primary" onClick={() => {
+                          message.success('Processing complete!');
+                          console.log("Posting deal data now!");
+                          this.postDealData();
+                        }}>
                             Done
                         </Button>
                     )}
                     {current < steps.length - 1 && (
-                        <Button type="primary" onClick={() => this.next()}>
+                        <Button type="primary" onClick={() => {
+
+                          this.next();
+
+                          if(this.state.mainComponentState === "ACCOUNT") {
+                            this.postAccountData();
+                            this.setState({mainComponentState : "COMPANY"});
+                          } else if(this.state.mainComponentState === "COMPANY") {
+                            this.postCompanyData();
+                            this.setState({mainComponentState : "DEAL"});
+                          } else {
+                            console.log("FINAL DONE");
+                          }
+
+                        }}>
                             Next
                         </Button>
                     )}

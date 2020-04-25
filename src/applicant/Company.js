@@ -10,7 +10,9 @@ class Company extends React.Component {
                     label="Company name"
                     name="companyName"
                 >
-                    <Input />
+                    <Input
+                    onChange={(event)=>{this.props.updateCompanyName(event.target.value);}}
+                    />
                 </Form.Item>
 
                 <Form.Item label="Activity category">
@@ -23,48 +25,62 @@ class Company extends React.Component {
                     label="NIP"
                     name="nip"
                 >
-                    <Input />
+                    <Input
+                    onChange={(event)=>{this.props.updateNip(event.target.value);}}
+                    />
                 </Form.Item>
 
                 <Form.Item
                     label="REGON"
                     name="regon"
                 >
-                    <Input />
+                    <Input
+                    onChange={(event)=>{this.props.updateRegon(event.target.value);}}
+                    />
                 </Form.Item>
                 <Form.Item
                     label="PESEL"
                     name="pesel"
                 >
-                    <Input />
+                    <Input
+                    onChange={(event)=>{this.props.updatePesel(event.target.value);}}
+                    />
                 </Form.Item>
 
                 <Form.Item
                     label="Company address"
                     name="companyAddress"
                 >
-                    <Input />
+                    <Input
+                    onChange={(event)=>{this.props.updateCompanyAddress(event.target.value);}}
+                    />
                 </Form.Item>
 
                 <Form.Item
                     label="Company phone"
                     name="companyPhone"
                 >
-                    <Input />
+                    <Input
+
+                    />
                 </Form.Item>
 
                 <Form.Item
                     label="Company website"
                     name="companyWebsite"
                 >
-                    <Input />
+                    <Input
+
+                    />
                 </Form.Item>
 
                 <Form.Item
                     label="Upload attachments"
                     name="attachments"
                 >
-                    <Input />
+                    <Input type="file" id="fileInput"
+                
+                    />
                 </Form.Item>
             </>
         );

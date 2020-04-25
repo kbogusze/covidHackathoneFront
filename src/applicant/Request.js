@@ -15,7 +15,9 @@ class Request extends React.Component {
                     label="Collateral title"
                     name="collateralTitle"
                 >
-                    <Input />
+                    <Input
+                    onChange={(event)=>{this.props.updateCollateralTitle(event.target.value);}}
+                    />
                 </Form.Item>
 
                 <Form.Item label="Due date">
@@ -26,11 +28,15 @@ class Request extends React.Component {
                     label="Reqeusted collateral amount"
                     name="amount"
                 >
-                    <Input />
+                    <Input
+                    onChange={(event)=>{this.props.updateRequestedCollateralAmount(event.target.value);}}
+                    />
                 </Form.Item>
 
                 <Form.Item name={'description'} label="Request description">
-                    <Input.TextArea />
+                    <Input.TextArea
+                    onChange={(event)=>{this.props.updateRequestDescription(event.target.value);}}
+                    />
                 </Form.Item>
 
                 <Form.Item  {...formTailLayout}>
