@@ -1,0 +1,91 @@
+.landing-background {
+    /*background-color: cornflowerblue;*/
+
+    color: rgb(0, 29, 56);
+}
+
+.landing-background .ant-typography {
+
+    color: rgb(0, 29, 56);
+}
+
+.buttons-container {
+    margin: 40px 0;
+    text-align: center;
+}
+
+.main-icon-button {
+    cursor: pointer;
+    width: 320px;
+    height: 320px;
+    border-radius: 20px;
+    visibility: visible;
+    animation-duration: 1.2s;
+    animation-delay: 0.5s;
+    animation-name: fadeInLeft;
+    background: linear-gradient(to bottom,#0a8cff 0%,#054680 100%);
+}
+
+.main-icon {
+    font-size: 120px;
+}
+
+.header-top {
+    visibility: visible;
+    animation-duration: 1s;
+    animation-delay: 0.1s;
+    animation-name: fadeInUp;
+    display: inline-block;
+    background: #33d4d6;
+    width: 60px;
+    height: 3px;
+    border-radius: 2px;
+    margin-bottom: 4px;
+    margin-top: 40px;
+}
+
+.button-paragraph {
+    font-size: 20px;
+    margin: 20px 60px 0;
+    color: rgb(255, 255, 255);
+}
+
+.video {
+    text-align: center;
+}
+
+.howitworks {
+    background-color: rgb(245, 251, 255);
+}
+
+.works-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.works-step {
+    visibility: visible;
+    animation-duration: 1s;
+    animation-delay: 0.4s;
+    animation-name: fadeInUp;
+    padding-right: 25px;
+    width: 300px;
+    text-align: left;
+    font-size: 18px;
+}
+
+.works-circle {
+    display: inline-block;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: #ddf0ff;
+    color: #0a8cff;
+    text-align: center;
+    line-height: 72px;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 40px;
+}

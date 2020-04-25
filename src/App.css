@@ -2,6 +2,8 @@
 
 body {
   font-size: 14px;
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 29, 56);
 }
 
 .App {
@@ -43,30 +45,10 @@ body {
   }
 }
 
-.buttons-container {
-  margin: 0 auto;
-}
-
-.main-icon-button {
-  width: 400px;
-  height: 400px;
-}
-
-.main-icon {
-  font-size: 80px;
-}
-
-.button-paragraph {
-  font-size: 24px
-}
 .guarantor {
   margin-left: 50px;
 }
 
 .center {
   margin: 0 auto;
-}
-
-.video {
-  margin: 50px auto 50px;
 }

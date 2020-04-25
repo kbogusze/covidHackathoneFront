@@ -14,7 +14,7 @@ import Application from './application/Application';
 
 const App = () => {
     return (
-        <Layout style={{minHeight: '100vh', padding: '60px 60px 0'}}>
+        // <Layout style={{minHeight: '100vh'}}>
             <Router>
                     {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
@@ -36,7 +36,7 @@ const App = () => {
                     </Route>
                 </Switch>
             </Router>
-        </Layout>
+        // </Layout>
     )
 }
 
