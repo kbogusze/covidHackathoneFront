@@ -15,8 +15,8 @@ const onFinishFailed = errorInfo => {
 };
 
 const formTailLayout = {
-    labelCol: { span: 6 },
-    wrapperCol: { span: 6, offset: 4 },
+    labelCol: { span: 4 },
+    wrapperCol: { span: 8, offset: 4 },
 };
 
 class Request extends React.Component {
@@ -52,19 +52,19 @@ class Request extends React.Component {
                     <Input.TextArea />
                 </Form.Item>
 
-                <Form.Item>
+                <Form.Item  {...formTailLayout}>
                     <Checkbox >
                         I hereby consent to my personal data being processed by the Solidarity Collateral for the purposes of the application proceeding
                     </Checkbox>
                 </Form.Item>
 
-                <Form.Item>
+                <Form.Item  {...formTailLayout}>
                     <Checkbox >
                         I have read Terms and Conditions
                     </Checkbox>
                 </Form.Item>
 
-                <Form.Item>
+                <Form.Item  {...formTailLayout}>
                     <Checkbox >
                         I allow Solidarity Collateral to process my personal data for the marketing purposes
                     </Checkbox>
