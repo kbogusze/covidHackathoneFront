@@ -73,7 +73,7 @@ class Applicant extends React.Component {
                     ))}
                 </Steps>
                 <div className="steps-content">
-                    <CurrentContent/>
+                    <CurrentContent onFieldChange={this.handleInputChange}/>
                 </div>
                 <div className="steps-action">
                     {current > 0 && (

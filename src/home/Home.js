@@ -4,6 +4,7 @@ import {Button} from 'antd';
 import {DesktopOutlined, FileOutlined} from '@ant-design/icons';
 import React from 'react';
 import Paragraph from 'antd/lib/typography/Paragraph';
+import Gallery from '../gallery/Gallery';
 
 function Home() {
     return (
@@ -37,6 +38,8 @@ function Home() {
                         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen></iframe>
             </div>
+
+            <Gallery/>
         </>
     )
 }
