@@ -5,6 +5,8 @@ import Account from './Account';
 import Company from './Company';
 import Request from './Request';
 
+import './applicant.css';
+
 const { Step } = Steps;
 
 const steps = [
