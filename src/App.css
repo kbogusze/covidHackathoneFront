@@ -1,5 +1,9 @@
 @import '~antd/dist/antd.css';
 
+body {
+  font-size: 14px;
+}
+
 .App {
   text-align: center;
 }
@@ -37,4 +41,24 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.buttons-container {
+  margin: 0 auto;
+}
+
+.main-icon-button {
+  width: 400px;
+  height: 400px;
+}
+
+.main-icon {
+  font-size: 80px;
+}
+
+.button-paragraph {
+  font-size: 24px
+}
+.guarantor {
+  margin-left: 50px;
 }
