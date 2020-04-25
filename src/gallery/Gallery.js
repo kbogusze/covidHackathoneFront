@@ -41,16 +41,26 @@ export const deals = [
 class Gallery extends React.Component {
     render() {
         return (
-            <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-                {deals.map((deal, index) => (
-                    <Col className="gutter-row" span={6}>
+            <div style={{
+                margin: '40px 0',
+                padding: '30px',
+                backgroundColor: 'rgb(255, 255, 255)'
+            }}>
+                <h3 style={{textAlign: 'left', margin: '0 50px'}}>
+                    Active applications:
+                </h3>
+                <div style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                }}>
+                    {deals.map((deal, index) => (
                         <Tile
                             key={index}
                             deal={deal}
                         />
-                    </Col>
-                ))}
-            </Row>
+                    ))}
+                </div>
+            </div>
         )
     }
 }

@@ -8,7 +8,7 @@ const Tile = (props) => {
     const match = useRouteMatch();
 
     return (
-        <Link to={redirect ? `${match.url}/${id}` : 'gallery'}>
+        <Link to={redirect ? `${match.url}/${id}` : 'gallery'} style={{margin: '10px'}}>
             <Card
                 hoverable
                 style={{ width: 320 }}
