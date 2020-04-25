@@ -1,21 +1,24 @@
 import React from 'react';
 
 import { Steps, Button, message } from 'antd';
+import Account from './Account';
+import Company from './Company';
+import Request from './Request';
 
 const { Step } = Steps;
 
 const steps = [
     {
-        title: 'First',
-        content: 'First-content',
+        title: 'Account creation',
+        content: Account,
     },
     {
-        title: 'Second',
-        content: 'Second-content',
+        title: 'Company details',
+        content: Company,
     },
     {
-        title: 'Last',
-        content: 'Last-content',
+        title: 'Application request',
+        content: Request,
     },
 ];
 
@@ -39,6 +42,7 @@ class Applicant extends React.Component {
 
     render() {
         const { current } = this.state;
+        const CurrentContent = steps[current].content;
         return (
             <div>
                 <Steps current={current}>
@@ -46,7 +50,9 @@ class Applicant extends React.Component {
                         <Step key={item.title} title={item.title} />
                     ))}
                 </Steps>
-                <div className="steps-content">{steps[current].content}</div>
+                <div className="steps-content">
+                    <CurrentContent/>
+                </div>
                 <div className="steps-action">
                     {current < steps.length - 1 && (
                         <Button type="primary" onClick={() => this.next()}>
