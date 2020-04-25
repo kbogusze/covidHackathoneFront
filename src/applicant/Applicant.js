@@ -142,8 +142,7 @@ class Applicant extends React.Component {
 
     postCompanyData() {
       console.log("Posting Company data to server!!!");
-
-      console.log("Has DOM fileInput element? : " + document.getElementById('fileInput'));
+      console.log("Has DOM fileInput element? : " + document.getElementById('file'));
 
       var url = BackendConfiguration.serverAddress + "/company";
       var method = "POST";
