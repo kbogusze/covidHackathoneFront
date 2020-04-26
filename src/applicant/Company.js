@@ -7,6 +7,32 @@ import BackendConfiguration from "../BackendConfiguration";
 
 class Company extends React.Component {
 
+    constructor(props) {
+      super(props);
+      this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange (info) {
+    let fileList = [...info.fileList];
+
+    // 1. Limit the number of uploaded files
+    // Only to show two recent uploaded files, and old ones will be replaced by the new
+    fileList = fileList.slice(-2);
+
+    // 2. Read from response and show file link
+    fileList = fileList.map(file => {
+      if (file.response) {
+        // Component will show file.url as link
+        console.log("File object is: " + file);
+        console.log("Response is: " + file.response);
+        file.url = file.response.url;
+      }
+      return file;
+    });
+
+    //this.setState({ fileList });
+    }
+
     render() {
 
           const props = {
@@ -20,10 +46,14 @@ class Company extends React.Component {
             authorization: "Basic T1JGSTpPUkZJ"
           },
           onChange(info) {
+            console.log("Info onChange triggered!");
             if (info.file.status !== 'uploading') {
               console.log(info.file, info.fileList);
             }
             if (info.file.status === 'done') {
+              console.log("Info name: " + info.file.response);
+              localStorage.setItem('pictureId', info.file.response);
+              console.log("pictureId retrieved from local storage: " + localStorage.getItem('pictureId'));
               message.success(`${info.file.name} file uploaded successfully`);
             } else if (info.file.status === 'error') {
               message.error(`${info.file.name} file upload failed.`);

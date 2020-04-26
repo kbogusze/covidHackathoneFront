@@ -180,6 +180,7 @@ class Applicant extends React.Component {
       var object = {
        collateralTitle : this.state.collateralTitle,
        dueDate : this.state.dueDate,
+       mainPictureId : localStorage.getItem("pictureId"),
        marketingPurposes : true,
        personalDataAcceptance : true,
        requestDescription : this.state.requestDescription,
