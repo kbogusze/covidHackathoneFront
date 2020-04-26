@@ -8,6 +8,7 @@ import Paragraph from 'antd/lib/typography/Paragraph';
 import * as axios from 'axios';
 import BackendConfiguration from '../BackendConfiguration';
 import {useParams, useLocation} from "react-router-dom";
+import moment from 'moment';
 
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -36,8 +37,9 @@ const Application = (props) => {
         fetchData();
     }, []);
 
-    const {company} = data.deal;
+    const {company, deal} = data.deal;
     const companyInfo = company || {};
+    const dealInfo = deal || {};
 
     return (
         <div
@@ -49,14 +51,29 @@ const Application = (props) => {
                 <div style={{
                     flex: '3',
                 }}>
-                    <Header>
+                    <div style={{
+                        display: 'flex',
+                    }}>
                         <Progress percent={percent} size="small" status={getStatus(percent)}/>
-                    </Header>
+                        <span>
+                            <span style={{fontWeight: 'bold'}}>Due date: </span>
+                            {moment(dealInfo.dueDate).format('DD.MM.YYYY')}
+                        </span>
+                    </div>
                     <Content>
                         <Title level={2}>{companyInfo.companyName}</Title>
                         <Paragraph>
-                            {description}
+                            {dealInfo.requestDescription}
                         </Paragraph>
+                        <div style={{margin: '40px 0'}}>
+                            <img
+                                alt="example"
+                                style={{ width: 320 }}
+                                src={
+                                    `${BackendConfiguration.serverAddress}/dealview/mainpicture/stream/${dealInfo.mainPictureId}/${dealInfo.mainPictureName}`
+                                }
+                            />
+                        </div>
                     </Content>
                 </div>
                 <div
