@@ -1,14 +1,28 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 
 import Tile from './Tile';
 import {Col, Divider, Row} from 'antd';
 import {groupBy} from 'lodash';
 import './gallery.css';
 
-import {deals} from './Gallery';
+import * as axios from 'axios';
+import BackendConfiguration from '../BackendConfiguration';
 
 const GalleryPage = () => {
-    const categories = groupBy(deals, 'category');
+    const [data, setData] = useState({ deals: [] });
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const result = await axios.get(
+                `${BackendConfiguration.serverAddress}/dealview/deals`,
+            );
+            setData({deals:result.data});
+        };
+
+        fetchData();
+    }, []);
+
+    const categories = groupBy(data.deals, 'category');
 
     return (
         <div>

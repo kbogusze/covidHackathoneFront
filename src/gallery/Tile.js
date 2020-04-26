@@ -4,7 +4,7 @@ import {Link, useRouteMatch} from 'react-router-dom';
 const { Meta } = Card;
 
 const Tile = (props) => {
-    const {deal: {image, title, percent, id}, redirect} = props;
+    const {deal: {image, collateralTitle, percent, id, requestDescription}, redirect} = props;
     const match = useRouteMatch();
 
     return (
@@ -14,7 +14,10 @@ const Tile = (props) => {
                 style={{ width: 320 }}
                 cover={<img alt="example" src={image} />}
             >
-                <Meta title={title} />
+                <Meta title={collateralTitle} />
+                <p>
+                    {requestDescription}
+                </p>
                 <Progress percent={percent} size="small" status={getStatus(percent)} />
             </Card>
         </Link>
