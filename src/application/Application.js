@@ -7,7 +7,7 @@ import Title from 'antd/lib/typography/Title';
 import Paragraph from 'antd/lib/typography/Paragraph';
 import * as axios from 'axios';
 import BackendConfiguration from '../BackendConfiguration';
-import {useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import moment from 'moment';
 import './application.css';
 
@@ -59,7 +59,9 @@ const Application = (props) => {
                         <div className={'progress'}>
                             <div style={{backgroundColor: progressColor, width: `${percent}%`}}/>
                         </div>
-                        {`${percent}%`}
+                        <span style={{width: '210px'}}>
+                            {`${percent * dealInfo.requestedCollateralAmount / 100}zł out of ${dealInfo.requestedCollateralAmount}zł`}
+                        </span>
                         <span style={{marginLeft: '10px'}}>
                             <span style={{fontWeight: 'bold'}}>Due date: </span>
                             {moment(dealInfo.dueDate).format('DD.MM.YYYY')}
@@ -87,21 +89,36 @@ const Application = (props) => {
                         padding: '0 15px'
                     }}
                 >
-                    <button
-                        className={'app-button'}
-                        type={'button'}>
-                        Provide support
-                    </button>
-                    <button
-                        className={'app-button'}
-                        type={'button'}>
-                        Share on Facebook
-                    </button>
-                    <button
-                        className={'app-button'}
-                        type={'button'}>
-                        Share on Twitter
-                    </button>
+                    <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href={'https://www.bankmillennium.pl/osobiste2/Retail/Login/MulticodeRequest'}>
+                        <button
+                            className={'app-button'}
+                            type={'button'}>
+                            Provide support
+                        </button>
+                    </a>
+                    <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href={'https://facebook.com'}>
+                        <button
+                            className={'app-button'}
+                            type={'button'}>
+                            Share on Facebook
+                        </button>
+                    </a>
+                    <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href={'https://www.twitter.com'}>
+                        <button
+                            className={'app-button'}
+                            type={'button'}>
+                            Share on Twitter
+                        </button>
+                    </a>
                 </div>
             </div>
             <Layout>
