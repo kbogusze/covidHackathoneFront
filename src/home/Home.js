@@ -24,7 +24,7 @@ function Home() {
                 <div style={{textAlign: 'center'}}>
                     <span className={'header-top'}/>
                     <Title style={{margin: '0 40px 40px', fontSize: '48px'}}>Your business needs help? We can help you!</Title>
-                    <Paragraph className={'button-paragraph'}>
+                    <Paragraph className={'desc-paragraph'}>
                         Solidarity Collateral platform joins small or medium companies and guarantors together for common good. If your business requires additional funds and you need cash collateral simply use our service to find solidarity group, which can help your business keep afloat. If you would like to be part of solidarity group, become a guarantor and browse companies you want to help.
                     </Paragraph>
                 </div>

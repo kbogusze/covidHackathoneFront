@@ -52,6 +52,12 @@
     text-transform : uppercase;
 }
 
+.desc-paragraph {
+    font-size: 18px;
+    margin: 20px 60px 0;
+    color: rgb(255, 255, 255);
+}
+
 .video {
     text-align: center;
 }
