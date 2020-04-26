@@ -140,6 +140,7 @@ class Company extends React.Component {
                 <Form.Item
                     label="Upload attachments"
                     name="uploadAttachments"
+                    style={{textAlign: 'left'}}
                 >
                     <Upload {...props} beforeUpload={this.handleUploadChange}>
                       <Button>

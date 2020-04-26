@@ -3,7 +3,7 @@ import {Checkbox, DatePicker, Form, Input} from 'antd';
 
 const formTailLayout = {
     labelCol: { span: 4 },
-    wrapperCol: { span: 8, offset: 4 },
+    wrapperCol: { span: 10, offset: 6 },
 };
 
 class Request extends React.Component {
@@ -21,6 +21,7 @@ class Request extends React.Component {
                 <Form.Item
                     label="Due date"
                     name="dueDate"
+                    style={{textAlign: 'left'}}
                 >
                     <DatePicker />
                 </Form.Item>
@@ -36,19 +37,25 @@ class Request extends React.Component {
                     <Input.TextArea/>
                 </Form.Item>
 
-                <Form.Item  {...formTailLayout}>
+                <Form.Item
+                    style={{textAlign: 'left'}}
+                    {...formTailLayout}>
                     <Checkbox >
                         I hereby consent to my personal data being processed by the Solidarity Collateral for the purposes of the application proceeding
                     </Checkbox>
                 </Form.Item>
 
-                <Form.Item  {...formTailLayout}>
+                <Form.Item
+                    style={{textAlign: 'left'}}
+                    {...formTailLayout}>
                     <Checkbox >
                         I have read Terms and Conditions
                     </Checkbox>
                 </Form.Item>
 
-                <Form.Item  {...formTailLayout}>
+                <Form.Item
+                    style={{textAlign: 'left'}}
+                    {...formTailLayout}>
                     <Checkbox >
                         I allow Solidarity Collateral to process my personal data for the marketing purposes
                     </Checkbox>
