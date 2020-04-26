@@ -38,7 +38,8 @@ function Home() {
                 </div>
             </div>
             <div className={'video center'}>
-                <iframe style={{width: 'calc(100vw - 80px)', height: 'calc(56vw - 40px)'}} src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameBorder="0"
+                <iframe style={{width: 'calc(100vw - 80px)', height: 'calc(56vw - 40px)'}}
+                        src="https://drive.google.com/file/d/1JcUXUAwSXwW3VqI02gLvR8FydkxWrUaz/preview" frameBorder="0"
                         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen/>
             </div>
