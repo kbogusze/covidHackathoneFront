@@ -52,6 +52,7 @@ class Gallery extends React.Component {
                 <div style={{
                     display: 'flex',
                     justifyContent: 'center',
+                    flexWrap: 'wrap'
                 }}>
                     {deals.map((deal, index) => (
                         <Tile
