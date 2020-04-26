@@ -170,12 +170,15 @@ class Applicant extends React.Component {
            personalDataAcceptance : true,
            requestDescription : this.state.requestDescription,
            requestedCollateralAmount : this.state.requestedCollateralAmount,
-          headers: {
-              "Authorization": this.encodeUserCrendentialsInBase64(this.state.login, this.state.password),
-          }
       };
 
-      axios.post(url, object)
+      axios.post(
+          url,
+          object,
+          {
+            headers: {
+              "Authorization": this.encodeUserCrendentialsInBase64(this.state.login, this.state.password),
+          }})
           .then(() => {
               this.props.history.push('gallery')
           })
