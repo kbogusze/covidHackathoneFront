@@ -5,4 +5,7 @@
     border: none;
     height: 50px;
     margin: 0 0 20px;
+    cursor: pointer;
+    color: white;
+    background-color: rgba(0, 29, 56, 0.8);
 }

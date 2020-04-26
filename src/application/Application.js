@@ -80,6 +80,7 @@ const Application = (props) => {
                 <div
                     style={{
                         flex: '1',
+                        padding: '0 15px'
                     }}
                 >
                     <button
