@@ -22,7 +22,7 @@ const App = () => {
                     justifyContent: 'space-between',
                     alignItems: 'center'
                 }}>
-                    <Link to={'home'}>
+                    <Link to={'/'}>
                         <span style={{color: 'white'}}>Solidarity Collateral</span>
                     </Link>
                     <span style={{fontSize: '16px'}}>Login</span>
