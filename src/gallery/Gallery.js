@@ -12,28 +12,28 @@ export const deals = [
         id: 1,
         collateralTitle: 'ABC Bookstore',
         image: bookstore,
-        percent: 70,
+        collectedValue: 70,
         category: 'bookstore'
     },
     {
         id: 2,
         collateralTitle: 'Empik',
         image: empik,
-        percent: 25,
+        collectedValue: 25,
         category: 'bookstore'
     },
     {
         id: 3,
         collateralTitle: 'Księgarnia Litera',
         image: bookstore2,
-        percent: 10,
+        collectedValue: 10,
         category: 'bookstore'
     },
     {
         id: 4,
         collateralTitle: 'Aroma cafe',
         image: coffeeshop,
-        percent: 50,
+        collectedValue: 50,
         category: 'gastronomy'
     },
 ];
