@@ -10,6 +10,7 @@ class Company extends React.Component {
     constructor(props) {
       super(props);
       this.handleChange = this.handleChange.bind(this);
+      this.state = {fileName: ''};
     }
 
     handleChange (info) {
@@ -33,10 +34,14 @@ class Company extends React.Component {
     //this.setState({ fileList });
     }
 
+    handleUploadChange = ({file}) => {
+        this.setState({ fileName: file.name });
+    }
+
     render() {
 
           const props = {
-          name: 'content',
+          name: this.state.fileName,
           action: BackendConfiguration.serverAddress + '/documents',
           data: {
             dealID: "ddd",
@@ -124,7 +129,7 @@ class Company extends React.Component {
                     label="Upload attachments"
                     name="uploadAttachments"
                 >
-                    <Upload {...props}>
+                    <Upload {...props} onChange={this.handleUploadChange}>
                       <Button>
                         <UploadOutlined /> Click to Upload
                       </Button>
