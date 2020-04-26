@@ -28,8 +28,8 @@ const GalleryPage = () => {
         <div
             className={'page-container'}
         >
-            {Object.keys(categories).map((key) => (
-                <>
+            {Object.keys(categories).map((key, index) => (
+                <div key={index}>
                     <Divider orientation="left" style={{ color: '#333', fontWeight: 'normal' }}>
                         {key}
                     </Divider>
@@ -47,7 +47,7 @@ const GalleryPage = () => {
                             />
                         ))}
                     </div>
-                </>
+                </div>
             ))}
         </div>
     )

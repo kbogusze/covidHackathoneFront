@@ -1,15 +1,14 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {Card, Progress} from 'antd';
 import {Link, useRouteMatch} from 'react-router-dom';
 import Paragraph from 'antd/lib/typography/Paragraph';
 import BackendConfiguration from '../BackendConfiguration';
-import * as axios from 'axios';
 const { Meta } = Card;
 
 const Tile = (props) => {
     const {deal, redirect} = props;
     const match = useRouteMatch();
-    const {mainPictureName, mainPictureId, image, collateralTitle, percent, id, requestDescription} = deal;
+    const {mainPictureName, mainPictureId, image, collateralTitle, collectedValue: percent, id, requestDescription} = deal;
 
     return (
         <Link
