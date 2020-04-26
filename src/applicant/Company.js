@@ -4,6 +4,15 @@ import { Upload, message, Button } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import BackendConfiguration from "../BackendConfiguration";
 
+const categoriesOptions = [
+    'Restaurant',
+    'Bar',
+    'Grocery',
+    'Store',
+    'Hairdresser',
+    'Beautician',
+    'Newsstand',
+];
 
 class Company extends React.Component {
 
@@ -80,7 +89,11 @@ class Company extends React.Component {
                     name="category"
                 >
                     <Select>
-                        <Select.Option value="demo">Demo</Select.Option>
+                        {
+                            categoriesOptions.map((category, index) => (
+                                <Select.Option key={index} value={category}>{category}</Select.Option>
+                            ))
+                        }
                     </Select>
                 </Form.Item>
 
