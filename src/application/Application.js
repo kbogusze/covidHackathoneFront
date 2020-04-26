@@ -7,10 +7,11 @@ import Title from 'antd/lib/typography/Title';
 import Paragraph from 'antd/lib/typography/Paragraph';
 import * as axios from 'axios';
 import BackendConfiguration from '../BackendConfiguration';
-import {useParams, useLocation} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import moment from 'moment';
+import './application.css';
 
-const { Header, Footer, Sider, Content } = Layout;
+const { Footer, Content } = Layout;
 
 const application = {
     id: 2,
@@ -80,7 +81,22 @@ const Application = (props) => {
                     style={{
                         flex: '1',
                     }}
-                >Sider
+                >
+                    <button
+                        className={'app-button'}
+                        type={'button'}>
+                        Provide support
+                    </button>
+                    <button
+                        className={'app-button'}
+                        type={'button'}>
+                        Share on Facebook
+                    </button>
+                    <button
+                        className={'app-button'}
+                        type={'button'}>
+                        Share on Twitter
+                    </button>
                 </div>
             </div>
             <Layout>

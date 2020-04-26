@@ -1,0 +1,8 @@
+.app-button {
+    display: block;
+    border-radius: 5px;
+    width: 100%;
+    border: none;
+    height: 50px;
+    margin: 0 0 20px;
+}
