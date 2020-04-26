@@ -25,7 +25,10 @@ const App = () => {
                     <Link to={'/'}>
                         <span style={{color: 'white'}}>Solidarity Collateral</span>
                     </Link>
-                    <span style={{fontSize: '16px'}}>Login</span>
+                    <Link to={'/gallery'} style={{marginTop: '-10px'}}>
+                        <span style={{fontSize: '16px', color: 'white'}}>Login</span>
+                    </Link>
+
                 </h1>
                     {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
