@@ -31,7 +31,7 @@ function Home() {
                         <button className={'main-icon-button applicant'} >
                             <SolutionOutlined className={'main-icon'}/>
                             <p className={'button-paragraph'}>
-                                I'm a an applicant
+                                I'm an applicant
                             </p>
                         </button>
                     </Link>

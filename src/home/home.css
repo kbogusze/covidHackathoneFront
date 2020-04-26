@@ -28,6 +28,7 @@
 
 .main-icon {
     font-size: 120px;
+    color: white;
 }
 
 .header-top {
@@ -45,9 +46,10 @@
 }
 
 .button-paragraph {
-    font-size: 20px;
+    font-size: 22px;
     margin: 20px 60px 0;
     color: rgb(255, 255, 255);
+    text-transform : uppercase;
 }
 
 .video {
