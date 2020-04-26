@@ -48,20 +48,20 @@ const Tile = (props) => {
 }
 
 export const getStatus = (percentage) => {
-    if (percentage < 26) {
-        return 'exception';
+    if (percentage < 25) {
+        return 'red';
     }
 
-    if (percentage >= 26 && percentage < 51) {
-        return 'active';
+    if (percentage >= 25 && percentage < 50) {
+        return 'yellow';
     }
 
-    if (percentage >= 51 && percentage < 75) {
-        return 'normal';
+    if (percentage >= 50 && percentage < 75) {
+        return 'orange';
     }
 
     if (percentage >= 75) {
-        return 'success';
+        return 'green';
     }
 }
 

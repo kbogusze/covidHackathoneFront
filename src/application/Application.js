@@ -23,7 +23,6 @@ const application = {
 };
 
 const Application = (props) => {
-    const {percent, title, description} = application;
     const [data, setData] = useState({deal: {}});
     const {id} = useParams();
 
@@ -41,6 +40,8 @@ const Application = (props) => {
     const {company, deal} = data.deal;
     const companyInfo = company || {};
     const dealInfo = deal || {};
+    const percent = dealInfo.collectedValue;
+    const progressColor = getStatus(percent);
 
     return (
         <div
@@ -55,8 +56,11 @@ const Application = (props) => {
                     <div style={{
                         display: 'flex',
                     }}>
-                        <Progress percent={percent} size="small" status={getStatus(percent)}/>
-                        <span>
+                        <div className={'progress'}>
+                            <div style={{backgroundColor: progressColor, width: `${percent}%`}}/>
+                        </div>
+                        {`${percent}%`}
+                        <span style={{marginLeft: '10px'}}>
                             <span style={{fontWeight: 'bold'}}>Due date: </span>
                             {moment(dealInfo.dueDate).format('DD.MM.YYYY')}
                         </span>
