@@ -163,13 +163,16 @@ class Applicant extends React.Component {
       var url = BackendConfiguration.serverAddress + "/deals";
       var method = "POST";
       var object = {
-       collateralTitle : this.state.collateralTitle,
-       dueDate : this.state.dueDate,
-       mainPictureId : localStorage.getItem("pictureId"),
-       marketingPurposes : true,
-       personalDataAcceptance : true,
-       requestDescription : this.state.requestDescription,
-       requestedCollateralAmount : this.state.requestedCollateralAmount
+           collateralTitle : this.state.collateralTitle,
+           dueDate : this.state.dueDate,
+           mainPictureId : localStorage.getItem("pictureId"),
+           marketingPurposes : true,
+           personalDataAcceptance : true,
+           requestDescription : this.state.requestDescription,
+           requestedCollateralAmount : this.state.requestedCollateralAmount,
+          headers: {
+              "Authorization": this.encodeUserCrendentialsInBase64(this.state.login, this.state.password),
+          }
       };
 
       axios.post(url, object)
