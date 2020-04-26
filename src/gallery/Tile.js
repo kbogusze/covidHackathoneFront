@@ -22,7 +22,7 @@ const Tile = (props) => {
                 style={{ width: 320 }}
                 cover={
                     <div
-                        style={{overflowY: 'hidden', maxHeight: '250px'}}
+                        style={{overflowY: 'hidden', maxHeight: '210px'}}
                     >
                         <img
                             alt="example"
