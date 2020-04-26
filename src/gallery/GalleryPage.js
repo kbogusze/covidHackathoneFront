@@ -33,9 +33,8 @@ const GalleryPage = () => {
                     </Divider>
                     <Row gutter={{ xs: 8, sm: 16, md: 24 }}>
                         {categories[key].map((deal, index) => (
-                            <Col className="gutter-row" span={6}>
+                            <Col key={index} className="gutter-row" span={6}>
                                 <Tile
-                                    key={index}
                                     deal={deal}
                                     redirect={true}
                                 />

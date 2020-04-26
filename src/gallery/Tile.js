@@ -2,10 +2,11 @@ import React from 'react';
 import {Card, Progress} from 'antd';
 import {Link, useRouteMatch} from 'react-router-dom';
 import Paragraph from 'antd/lib/typography/Paragraph';
+import BackendConfiguration from '../BackendConfiguration';
 const { Meta } = Card;
 
 const Tile = (props) => {
-    const {deal: {image, collateralTitle, percent, id, requestDescription}, redirect} = props;
+    const {deal: {mainPictureName, collateralTitle, percent, id, requestDescription}, redirect} = props;
     const match = useRouteMatch();
 
     return (
@@ -13,7 +14,7 @@ const Tile = (props) => {
             <Card
                 hoverable
                 style={{ width: 320 }}
-                cover={<img alt="example" src={image} />}
+                cover={<img alt="example" src={`${BackendConfiguration.serverAddress}/dealview/mainpicture/stream/${id}/${mainPictureName}`} />}
             >
                 <Meta title={collateralTitle} />
                 <Paragraph style={{marginTop: '15px'}} ellipsis={{ rows: 4 }}>

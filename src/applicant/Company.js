@@ -43,18 +43,17 @@ class Company extends React.Component {
     //this.setState({ fileList });
     }
 
-    handleUploadChange = ({file}) => {
+    handleUploadChange = (file) => {
         this.setState({ fileName: file.name });
     }
 
     render() {
-
           const props = {
-          name: this.state.fileName,
+          name: 'content',
           action: BackendConfiguration.serverAddress + '/documents',
           data: {
             dealID: "ddd",
-            title: "myPicture.png"
+            title: this.state.fileName
           },
           headers: {
             authorization: "Basic T1JGSTpPUkZJ"
@@ -142,7 +141,7 @@ class Company extends React.Component {
                     label="Upload attachments"
                     name="uploadAttachments"
                 >
-                    <Upload {...props} onChange={this.handleUploadChange}>
+                    <Upload {...props} beforeUpload={this.handleUploadChange}>
                       <Button>
                         <UploadOutlined /> Click to Upload
                       </Button>
