@@ -74,32 +74,6 @@ class Applicant extends React.Component {
             requestDescription: undefined
         };
 
-        this.updateLogin = this.updateLogin.bind(this);
-        this.updatePassword = this.updatePassword.bind(this);
-        this.updatePasswordConfirmation = this.updatePasswordConfirmation.bind(this);
-        this.updateEmail = this.updateEmail.bind(this);
-        this.updateName = this.updateName.bind(this);
-        this.updateSurname = this.updateSurname.bind(this);
-        this.updateAddress = this.updateAddress.bind(this);
-        this.updatePhone = this.updatePhone.bind(this);
-        this.updateCompanyName = this.updateCompanyName.bind(this);
-        this.updateActivityCategory = this.updateActivityCategory.bind(this);
-
-        this.updateCompanyName = this.updateCompanyName.bind(this);
-        this.updateActivityCategory = this.updateActivityCategory.bind(this);
-        this.updateNip = this.updateNip.bind(this);
-        this.updateRegon = this.updateRegon.bind(this);
-        this.updatePesel = this.updatePesel.bind(this);
-        this.updateCompanyAddress = this.updateCompanyAddress.bind(this);
-        this.updateCompanyPhone = this.updateCompanyPhone.bind(this);
-        this.updateCompanyAddress = this.updateCompanyAddress.bind(this);
-
-        this.updateCollateralTitle = this.updateCollateralTitle.bind(this);
-        this.updateDueDate = this.updateDueDate.bind(this);
-        this.updateSelectDate = this.updateSelectDate.bind(this);
-        this.updateRequestedCollateralAmount = this.updateRequestedCollateralAmount.bind(this);
-        this.updateRequestDescription = this.updateRequestDescription.bind(this);
-
         this.postAccountData = this.postAccountData.bind(this);
         this.postCompanyData = this.postCompanyData.bind(this);
         this.postDealData = this.postDealData.bind(this);
@@ -108,7 +82,18 @@ class Applicant extends React.Component {
         this.encodeUserCrendentialsInBase64 = this.encodeUserCrendentialsInBase64.bind(this);
     }
 
+    handleInputChange = (changedFields) => {
+        const changedField = changedFields[0];
 
+        if (changedField) {
+            const name = changedField.name[0];
+            const value = changedField.value;
+
+            this.setState({
+                [name]: value
+            });
+        }
+    }
 
     postAccountData() {
       console.log("Posting Person data to server!!!");
@@ -215,78 +200,6 @@ class Applicant extends React.Component {
         return "Basic " + hash;
     }
 
-    updateLogin(newState) {
-      console.log("Updating login with newState : " + newState);
-      this.setState({login:newState});
-    }
-    updatePassword(newState) {
-      this.setState({password:newState});
-    }
-    updatePasswordConfirmation(newState) {
-      this.setState({passwordConfirmation:newState});
-    }
-    updateEmail(newState) {
-      this.setState({email:newState});
-    }
-    updateName(newState) {
-      console.log("Updating name with newState : " + newState);
-      this.setState({name:newState});
-    }
-    updateSurname(newState) {
-      console.log("Updating surname with newState : " + newState);
-      this.setState({surname:newState});
-    }
-    updateAddress(newState) {
-      this.setState({address:newState});
-    }
-    updatePhone(newState) {
-      this.setState({phone:newState});
-    }
-    updateCompanyName(newState) {
-      console.log("Updating company name with newState : " + newState);
-      this.setState({companyName:newState});
-    }
-    updateActivityCategory(newState) {
-      this.setState({activityCategory:newState});
-    }
-    updateNip(newState) {
-      this.setState({nip:newState});
-    }
-    updateRegon(newState) {
-      this.setState({regon:newState});
-    }
-    updatePesel(newState) {
-      this.setState({pesel:newState});
-    }
-    updateCompanyAddress(newState) {
-      this.setState({companyAddress:newState});
-    }
-    updateCompanyPhone(newState) {
-      this.setState({companyPhone:newState});
-    }
-    updateCompanyWebsite(newState) {
-      this.setState({companyWebsite:newState});
-    }
-    updateUploadAttachments(newState) {
-      this.setState({uploadAttachments:newState});
-    }
-    //---
-    updateCollateralTitle(newState) {
-      this.setState({collateralTitle:newState});
-    }
-    updateDueDate(newState) {
-      this.setState({dueDate:newState});
-    }
-    updateSelectDate(newState) {
-      this.setState({selectDate:newState});
-    }
-    updateRequestedCollateralAmount(newState) {
-      this.setState({requestedCollateralAmount:newState});
-    }
-    updateRequestDescription(newState) {
-      this.setState({requestDescription:newState});
-    }
-
     next() {
         const current = this.state.current + 1;
         this.setState({ current });
@@ -304,6 +217,7 @@ class Applicant extends React.Component {
         return (
             <Form
                 {...layout}
+                onFieldsChange={this.handleInputChange}
                 name="applicantForm"
                 initialValues={{ remember: true }}
                 onFinish={onFinish}
@@ -315,32 +229,7 @@ class Applicant extends React.Component {
                     ))}
                 </Steps>
                 <div className="steps-content">
-                    <CurrentContent
-                    onFieldChange={this.handleInputChange}
-                    updateLogin={this.updateLogin}
-                    updatePassword = {this.updatePassword}
-                    updatePasswordConfirmation = {this.updatePasswordConfirmation}
-                    updateEmail = {this.updateEmail}
-                    updateName = {this.updateName}
-                    updateSurname = {this.updateSurname}
-                    updateAddress = {this.updateAddress}
-                    updatePhone = {this.updatePhone}
-
-                    updateCompanyName = {this.updateCompanyName}
-                    updateActivityCategory = {this.updateActivityCategory}
-                    updateNip = {this.updateNip}
-                    updateRegon = {this.updateRegon}
-                    updatePesel = {this.updatePesel}
-                    updateCompanyAddress = {this.updateCompanyAddress}
-                    updateCompanyPhone = {this.updateCompanyPhone}
-                    updateCompanyAddress = {this.updateCompanyAddress}
-
-                    updateCollateralTitle = {this.updateCollateralTitle}
-                    updateDueDate = {this.updateDueDate}
-                    updateSelectDate = {this.updateSelectDate}
-                    updateRequestedCollateralAmount = {this.updateRequestedCollateralAmount}
-                    updateRequestDescription = {this.updateRequestDescription}
-                    />
+                    <CurrentContent/>
                 </div>
                 <div className="steps-action">
                     {current > 0 && (

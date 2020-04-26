@@ -44,6 +44,19 @@ class Guarantor extends React.Component {
         this.setState({ current });
     }
 
+    handleInputChange = (changedFields) => {
+        const changedField = changedFields[0];
+
+        if (changedField) {
+            const name = changedField.name[0];
+            const value = changedField.value;
+
+            this.setState({
+                [name]: value
+            });
+        }
+    }
+
     render() {
         const { current } = this.state;
         const CurrentContent = steps[current].content;
@@ -51,6 +64,7 @@ class Guarantor extends React.Component {
         return (
             <Form
                 {...layout}
+                onFieldsChange={this.handleInputChange}
                 name="guarantorForm"
                 initialValues={{ remember: true }}
                 onFinish={onFinish}
