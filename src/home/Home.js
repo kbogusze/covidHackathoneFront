@@ -14,9 +14,11 @@ function Home() {
                 backgroundColor: 'rgba(0, 29, 56, 0.8)',
                 color: 'white',
                 padding: '10px 50px',
-
+                display: 'flex',
+                justifyContent: 'space-between'
             }}>
-                Solidarity Collateral
+                <span>Solidarity Collateral</span>
+                <span>Login</span>
             </h1>
             <div className={'landing-background'}>
                 <div style={{textAlign: 'center'}}>
