@@ -1,6 +1,7 @@
 import React from 'react';
 import {Card, Progress} from 'antd';
 import {Link, useRouteMatch} from 'react-router-dom';
+import Paragraph from 'antd/lib/typography/Paragraph';
 const { Meta } = Card;
 
 const Tile = (props) => {
@@ -15,9 +16,9 @@ const Tile = (props) => {
                 cover={<img alt="example" src={image} />}
             >
                 <Meta title={collateralTitle} />
-                <p>
+                <Paragraph style={{marginTop: '15px'}} ellipsis={{ rows: 4 }}>
                     {requestDescription}
-                </p>
+                </Paragraph>
                 <Progress percent={percent} size="small" status={getStatus(percent)} />
             </Card>
         </Link>
