@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 
 import Tile from './Tile';
-import {Col, Divider, Form, Row} from 'antd';
+import {Divider} from 'antd';
 import {groupBy} from 'lodash';
 import './gallery.css';
 
@@ -33,16 +33,20 @@ const GalleryPage = () => {
                     <Divider orientation="left" style={{ color: '#333', fontWeight: 'normal' }}>
                         {key}
                     </Divider>
-                    <Row gutter={{ xs: 8, sm: 16, md: 24 }}>
+                    <div
+                        style={{
+                            display: 'flex',
+                            flexWrap: 'wrap'
+                        }}
+                    >
                         {categories[key].map((deal, index) => (
-                            <Col key={index} className="gutter-row" span={6}>
-                                <Tile
-                                    deal={deal}
-                                    redirect={true}
-                                />
-                            </Col>
+                            <Tile
+                                key={index}
+                                deal={deal}
+                                redirect={true}
+                            />
                         ))}
-                    </Row>
+                    </div>
                 </>
             ))}
         </div>

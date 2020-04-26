@@ -15,14 +15,20 @@ const Tile = (props) => {
                 hoverable
                 style={{ width: 320 }}
                 cover={
-                    <img
-                        alt="example"
-                        src={
-                            mainPictureName
-                                ? `${BackendConfiguration.serverAddress}/dealview/mainpicture/stream/${mainPictureId}/${mainPictureName}`
-                                : image
-                        }
-                    />}
+                    <div
+                        style={{overflowY: 'hidden', maxHeight: '250px'}}
+                    >
+                        <img
+                            alt="example"
+                            style={{ width: 320 }}
+                            src={
+                                mainPictureName
+                                    ? `${BackendConfiguration.serverAddress}/dealview/mainpicture/stream/${mainPictureId}/${mainPictureName}`
+                                    : image
+                            }
+                        />
+                    </div>
+                }
             >
                 <Meta title={collateralTitle} />
                 <Paragraph style={{marginTop: '15px'}} ellipsis={{ rows: 4 }}>
