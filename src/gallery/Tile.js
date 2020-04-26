@@ -1,16 +1,23 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Card, Progress} from 'antd';
 import {Link, useRouteMatch} from 'react-router-dom';
 import Paragraph from 'antd/lib/typography/Paragraph';
 import BackendConfiguration from '../BackendConfiguration';
+import * as axios from 'axios';
 const { Meta } = Card;
 
 const Tile = (props) => {
-    const {deal: {mainPictureName, mainPictureId, image, collateralTitle, percent, id, requestDescription}, redirect} = props;
+    const {deal, redirect} = props;
     const match = useRouteMatch();
+    const {mainPictureName, mainPictureId, image, collateralTitle, percent, id, requestDescription} = deal;
 
     return (
-        <Link to={redirect ? `${match.url}/${id}` : 'gallery'} style={{margin: '10px'}}>
+        <Link
+            to={{
+                pathname: redirect ? `${match.url}/${id}` : 'gallery',
+                state: { deal }
+            }}
+              style={{margin: '10px'}}>
             <Card
                 hoverable
                 style={{ width: 320 }}

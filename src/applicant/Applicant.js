@@ -5,9 +5,10 @@ import Account from './Account';
 import Company from './Company';
 import Request from './Request';
 import BackendConfiguration from "../BackendConfiguration";
-import { useHistory } from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 
 import './applicant.css';
+import * as axios from 'axios';
 
 const { Step } = Steps;
 
@@ -78,7 +79,6 @@ class Applicant extends React.Component {
         this.postCompanyData = this.postCompanyData.bind(this);
         this.postDealData = this.postDealData.bind(this);
 
-        this.redirectToGallery = this.redirectToGallery.bind(this);
         this.encodeUserCrendentialsInBase64 = this.encodeUserCrendentialsInBase64.bind(this);
     }
 
@@ -171,25 +171,11 @@ class Applicant extends React.Component {
        requestDescription : this.state.requestDescription,
        requestedCollateralAmount : this.state.requestedCollateralAmount
       };
-      var objectJSON = JSON.stringify(object);
-      console.log(objectJSON);
-      const Http = new XMLHttpRequest();
-      Http.onload = function () {
-        var status = Http.status;
-        var data = Http.responseText;
-        console.log("Status: " + status);
-        console.log("Data: " + data);
-      }
-      Http.open("POST", url, true);
-      Http.setRequestHeader("Authorization", this.encodeUserCrendentialsInBase64(this.state.login, this.state.password));
-      Http.setRequestHeader("Content-Type", "application/json");
-      Http.send(objectJSON);
-    }
 
-    redirectToGallery() {
-      console.log("Redirecting to gallery!");
-      const history = useHistory();
-      history.push("/gallery");
+      axios.post(url, object)
+          .then(() => {
+              this.props.history.push('gallery')
+          })
     }
 
     encodeUserCrendentialsInBase64(user, password) {
@@ -272,4 +258,4 @@ class Applicant extends React.Component {
     }
 }
 
-export default Applicant;
+export default withRouter(Applicant);
