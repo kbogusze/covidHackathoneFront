@@ -10,28 +10,28 @@ import {Col, Row} from 'antd';
 export const deals = [
     {
         id: 1,
-        title: 'ABC Bookstore',
+        collateralTitle: 'ABC Bookstore',
         image: bookstore,
         percent: 70,
         category: 'bookstore'
     },
     {
         id: 2,
-        title: 'Empik',
+        collateralTitle: 'Empik',
         image: empik,
         percent: 25,
         category: 'bookstore'
     },
     {
         id: 3,
-        title: 'Księgarnia Litera',
+        collateralTitle: 'Księgarnia Litera',
         image: bookstore2,
         percent: 10,
         category: 'bookstore'
     },
     {
         id: 4,
-        title: 'Aroma cafe',
+        collateralTitle: 'Aroma cafe',
         image: coffeeshop,
         percent: 50,
         category: 'gastronomy'
