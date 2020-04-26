@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 
 import Tile from './Tile';
-import {Col, Divider, Row} from 'antd';
+import {Col, Divider, Form, Row} from 'antd';
 import {groupBy} from 'lodash';
 import './gallery.css';
 
@@ -25,7 +25,9 @@ const GalleryPage = () => {
     const categories = groupBy(data.deals, 'category');
 
     return (
-        <div>
+        <div
+            className={'page-container'}
+        >
             {Object.keys(categories).map((key) => (
                 <>
                     <Divider orientation="left" style={{ color: '#333', fontWeight: 'normal' }}>
