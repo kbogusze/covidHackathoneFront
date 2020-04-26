@@ -6,7 +6,7 @@ import BackendConfiguration from '../BackendConfiguration';
 const { Meta } = Card;
 
 const Tile = (props) => {
-    const {deal: {mainPictureName, image, collateralTitle, percent, id, requestDescription}, redirect} = props;
+    const {deal: {mainPictureName, mainPictureId, image, collateralTitle, percent, id, requestDescription}, redirect} = props;
     const match = useRouteMatch();
 
     return (
@@ -19,7 +19,7 @@ const Tile = (props) => {
                         alt="example"
                         src={
                             mainPictureName
-                                ? `${BackendConfiguration.serverAddress}/dealview/mainpicture/stream/${id}/${mainPictureName}`
+                                ? `${BackendConfiguration.serverAddress}/dealview/mainpicture/stream/${mainPictureId}/${mainPictureName}`
                                 : image
                         }
                     />}

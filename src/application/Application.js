@@ -31,9 +31,15 @@ class Application extends React.Component {
         const {percent, title, description} = application;
 
         return (
-            <Layout>
-                <Layout>
-                    <Layout>
+            <div
+                className={'page-container'}
+            >
+                <div style={{
+                    display: 'flex'
+                }}>
+                    <div style={{
+                        flex: '3'
+                    }}>
                         <Header>
                             <Progress percent={percent} size="small" status={getStatus(percent)} />
                         </Header>
@@ -43,9 +49,13 @@ class Application extends React.Component {
                                 {description}
                             </Paragraph>
                         </Content>
-                    </Layout>
-                    <Sider theme={'light'}>Sider</Sider>
-                </Layout>
+                    </div>
+                    <div
+                        style={{
+                            flex: '1'
+                        }}
+                    >Sider</div>
+                </div>
                 <Layout>
                     <Footer>
                         <Descriptions title="Info">
@@ -59,7 +69,7 @@ class Application extends React.Component {
                         </Descriptions>
                     </Footer>
                 </Layout>
-            </Layout>
+            </div>
         )
     }
 }
