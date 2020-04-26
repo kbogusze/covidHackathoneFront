@@ -221,6 +221,7 @@ class Applicant extends React.Component {
                 name="applicantForm"
                 initialValues={{ remember: true }}
                 onFinish={onFinish}
+                className={'page-container'}
                 onFinishFailed={onFinishFailed}
             >
                 <Steps current={current}>

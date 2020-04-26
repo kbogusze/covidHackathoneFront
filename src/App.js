@@ -16,6 +16,16 @@ const App = () => {
     return (
         // <Layout style={{minHeight: '100vh'}}>
             <Router>
+                <h1 style={{
+                    backgroundColor: 'rgba(0, 29, 56, 0.8)',
+                    color: 'white',
+                    padding: '10px 50px',
+                    display: 'flex',
+                    justifyContent: 'space-between'
+                }}>
+                    <span>Solidarity Collateral</span>
+                    <span>Login</span>
+                </h1>
                     {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
                 <Switch>

@@ -10,16 +10,6 @@ import TeamOutlined from '@ant-design/icons/lib/icons/TeamOutlined';
 function Home() {
     return (
         <>
-            <h1 style={{
-                backgroundColor: 'rgba(0, 29, 56, 0.8)',
-                color: 'white',
-                padding: '10px 50px',
-                display: 'flex',
-                justifyContent: 'space-between'
-            }}>
-                <span>Solidarity Collateral</span>
-                <span>Login</span>
-            </h1>
             <div className={'landing-background'}>
                 <div style={{textAlign: 'center'}}>
                     <span className={'header-top'}/>

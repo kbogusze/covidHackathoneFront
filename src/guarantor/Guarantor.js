@@ -68,6 +68,7 @@ class Guarantor extends React.Component {
                 name="guarantorForm"
                 initialValues={{ remember: true }}
                 onFinish={onFinish}
+                className={'page-container'}
                 onFinishFailed={onFinishFailed}
             >
                 <Steps current={current}>

@@ -52,3 +52,7 @@ body {
 .center {
   margin: 0 auto;
 }
+
+.page-container {
+  margin: 40px 30px;
+}
